@@ -1,0 +1,155 @@
+{
+    "editor.fontSize": 14,
+    "editor.fontWeight": "normal",
+    // "editor.acceptSuggestionOnEnter": "on",
+    "editor.fontFamily": "Monaco, Menlo, 'Courier New', monospace",
+    "files.exclude": {},
+    "editor.tabSize": 4,
+    "search.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**.log": true,
+        "**/package-lock.json": true,
+        "**/yarn.lock": true,
+        "**/bower_components": true,
+        "**/tmp": true,
+        "**/**.svg": true
+    },
+    "editor.mouseWheelZoom": false,
+    "editor.renderIndentGuides": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true,
+        "source.fixAll": true
+    },
+    "workbench.quickOpen.closeOnFocusLost": false,
+    "workbench.colorCustomizations": {
+        "terminal.foreground": "#28FE14",
+        "terminal.background": "#000000"
+    },
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        "typescript": "tsx",
+        "postcss": "css",
+    },
+    "emmet.excludeLanguages": [
+        "typescriptreact"
+    ],
+    "emmet.includeLanguages": {
+        "postcss": "css",
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "workbench.statusBar.visible": true,
+    "workbench.editor.showTabs": true,
+    "editor.insertSpaces": true,
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+    "typescript.format.insertSpaceAfterConstructor": false,
+    "files.associations": {
+        "*.css": "css",
+        "Jenkinsfile": "yaml"
+    },
+    "terminal.external.osxExec": "/bin/zsh",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "editor.detectIndentation": false,
+    "editor.minimap.enabled": false,
+    "editor.formatOnSave": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "eslint.format.enable": true,
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "none",
+    "workbench.sideBar.location": "left",
+    "explorer.confirmDragAndDrop": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.suggestSmartCommit": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "breadcrumbs.enabled": true,
+    "workbench.iconTheme": "vscode-icons",
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveshare.anonymousGuestApproval": "accept",
+    "explorer.confirmDelete": false,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[css,scss]": {
+        "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "multiCommand.commands": [
+        {
+          "command": "app-suite",
+          "sequence": [
+            "workbench.action.terminal.new",
+            {
+              "command": "workbench.action.terminal.sendSequence",
+              "args": {
+                "text": "suited \u000D"
+              }
+            },
+            "workbench.action.terminal.split",
+            {
+              "command": "workbench.action.terminal.sendSequence",
+              "args": {
+                "text": "suitew \u000D"
+              }
+            },
+            "workbench.action.terminal.split",
+            {
+              "command": "workbench.action.terminal.sendSequence",
+              "args": {
+                "text": "suiter \u000D"
+              }
+            },
+            "workbench.action.terminal.split",
+            {
+              "command": "workbench.action.terminal.sendSequence",
+              "args": {
+                "text": "suites \u000D"
+              }
+            },
+            "workbench.action.terminal.split",
+            {
+              "command": "workbench.action.terminal.sendSequence",
+              "args": {
+                "text": "suitec \u000D"
+              }
+            }
+          ]
+        }
+    ],
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "explorer.enableDragAndDrop": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.editorAssociations": {
+        "*.html": "default"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "git.confirmSync": false,
+    "window.zoomLevel": 1,
+}
