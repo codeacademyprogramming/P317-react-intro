@@ -6,6 +6,7 @@ import { Flex } from "./components/Flex";
 // import { Counter } from "./Counter";
 
 function App() {
+  const [currentlyEditingTodo, setCurrentlyEditingTodo] = useState(null);
   const [newTodo, setNewTodo] = useState("");
   const [todos] = useState([
     {
@@ -127,8 +128,41 @@ function App() {
     }
   };
 
+  const handleDeleteSelecteds = () => {
+    setSelectedTodos((prevTodos) => {
+      return prevTodos.filter((prevTodo) => !prevTodo.isSelected);
+    });
+  };
+
+  const handleEdit = (e) => {
+    setCurrentlyEditingTodo((previouslyEditingTodo) => ({
+      ...previouslyEditingTodo,
+      text: e.target.value,
+    }));
+  };
+
+  const handleSave = () => {
+    setSelectedTodos((prevTodos) => {
+      return prevTodos.map((prevTodo) => {
+        if (prevTodo.id === currentlyEditingTodo.id) {
+          return {
+            ...prevTodo,
+            ...currentlyEditingTodo,
+          };
+        }
+        return prevTodo;
+      });
+    });
+    setCurrentlyEditingTodo(null);
+  };
+
+  const isAnySelected = useMemo(
+    () => selectedTodos.some((todo) => todo.isSelected),
+    [selectedTodos]
+  );
+
   return (
-    <div style={{ width: "50%", margin: "50px auto" }}>
+    <div style={{ width: "70%", margin: "50px auto" }}>
       <h1>Todo list</h1>
       <Flex justifyContent="space-between" alignItems="initial">
         <input
@@ -155,6 +189,10 @@ function App() {
         ref={checkboxRef}
       />
 
+      {isAnySelected && (
+        <button onClick={handleDeleteSelecteds}>Delete selected todos</button>
+      )}
+
       <ul
         style={{
           paddingLeft: 0,
@@ -172,8 +210,6 @@ function App() {
                 backgroundColor: isDone ? "green" : "initial",
                 color: isDone ? "white" : "initial",
                 padding: "10px",
-                borderBottom:
-                  index === todos.length - 1 ? "initial" : "2px solid black",
               }}
               key={id}
             >
@@ -188,9 +224,46 @@ function App() {
                   checked={isSelected}
                   style={{ marginRight: "8px" }}
                 />
-                #{id} | {text}
+                #{id} |
+                {currentlyEditingTodo?.id === id ? (
+                  <input
+                    value={currentlyEditingTodo.text}
+                    onChange={handleEdit}
+                  />
+                ) : (
+                  text
+                )}
               </span>
               <div>
+                {currentlyEditingTodo &&
+                  currentlyEditingTodo.id === id &&
+                  currentlyEditingTodo.text !== text && (
+                    <button
+                      style={{ marginRight: "10px" }}
+                      onClick={() => setCurrentlyEditingTodo(null)}
+                    >
+                      Cancel
+                    </button>
+                  )}
+                {!isDone && (
+                  <button
+                    style={{ marginRight: "10px" }}
+                    onClick={() => {
+                      if (currentlyEditingTodo?.id === id) {
+                        handleSave();
+                      } else {
+                        setCurrentlyEditingTodo({
+                          id,
+                          text,
+                          isDone,
+                          isSelected,
+                        });
+                      }
+                    }}
+                  >
+                    {currentlyEditingTodo?.id === id ? "Save" : "Edit"}
+                  </button>
+                )}
                 <button
                   style={{ marginRight: "10px" }}
                   onClick={handleDelete(id)}
