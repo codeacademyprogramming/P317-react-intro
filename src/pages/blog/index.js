@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useUserContext } from "../../hooks";
 
 export const Blogs = () => {
   const [posts, setPosts] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useUserContext();
 
   useEffect(() => {
     axios
@@ -13,7 +15,7 @@ export const Blogs = () => {
         setPosts(res.data);
         setIsLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setIsError(true);
         setIsLoading(false);
       });
@@ -24,7 +26,7 @@ export const Blogs = () => {
       {isLoading && <h2>Posts are loading...</h2>}
       {Boolean(posts.length) && (
         <>
-          <h3>Posts</h3>
+          <h3>Posts by {user ? user.firstname : ""}</h3>
           <ul
             style={{
               display: "flex",

@@ -1,5 +1,13 @@
-import React from 'react';
+import React from "react";
+import { useUserContext } from "../../hooks";
 
 export const NotFound = () => {
-    return <h1>The page you are looking for either removed or does not exist</h1>
-}
+  const { user } = useUserContext();
+
+  return (
+    <h1>
+      {user.firstname}, the page you are looking for either removed or does not
+      exist
+    </h1>
+  );
+};
